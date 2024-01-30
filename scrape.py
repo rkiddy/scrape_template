@@ -1,5 +1,6 @@
 
 import time
+import traceback
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -17,23 +18,21 @@ if __name__ == '__main__':
 
     br.implicitly_wait(10)
 
-    url = 'https://www.sjsu.edu/classes/schedules/fall-2023.php'
+    url = 'https://procurement.sccgov.org/doing-business-county/active-contracts'
 
     br.get(url)
 
-    time.sleep(5)
-
-    br.execute_script("removeButton()")
+    print("Good to go!")
 
     time.sleep(5)
 
-    for row in br.find_elements(By.TAG_NAME, 'tr'):
-        print(f"row: {row}")
+    try:
 
-    link = br.find_element(By.ID, 'classSchedule_next')
-    br.execute_script("arguments[0].scrollIntoView();", link)
-    time.sleep(3)
-    link.click()
+        for link in br.find_elements(By.TAG_NAME, 'a'):
+            print(f"    link: {link.get_attribute('href')}")
+
+    except:
+        traceback.print_exc()
 
     print("OK!")
 
