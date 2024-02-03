@@ -1,39 +1,31 @@
-
 import time
-import traceback
-
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.firefox.options import Options
 
-if __name__ == '__main__':
+br = webdriver.Chrome()
 
-    opts = Options()
-    opts.add_argument("--headless")
+br.set_window_position(50, 50)
+br.set_window_size(900, 900)
 
-    br = webdriver.Firefox(options=opts)
+br.implicitly_wait(10)
 
-    br.set_window_position(50, 50)
-    br.set_window_size(900, 900)
+url = 'https://procurement.sccgov.org/doing-business-county/active-contracts'
 
-    br.implicitly_wait(10)
+br.get(url)
 
-    url = 'https://procurement.sccgov.org/doing-business-county/active-contracts'
+print("Good to go!")
 
-    br.get(url)
+time.sleep(5)
 
-    print("Good to go!")
+try:
 
-    time.sleep(5)
+    for link in br.find_elements(By.TAG_NAME, 'a'):
+        print(f"    link: {link.get_attribute('href')}")
 
-    try:
+except:
+    traceback.print_exc()
 
-        for link in br.find_elements(By.TAG_NAME, 'a'):
-            print(f"    link: {link.get_attribute('href')}")
+print("OK!")
 
-    except:
-        traceback.print_exc()
+br.quit()
 
-    print("OK!")
-
-    br.quit()
