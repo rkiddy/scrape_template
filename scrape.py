@@ -1,8 +1,14 @@
 import time
+import traceback
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.firefox.options import Options
 
-br = webdriver.Chrome()
+opts = Options()
+opts.add_argument("--headless")
+
+br = webdriver.Firefox(options=opts)
 
 br.set_window_position(50, 50)
 br.set_window_size(900, 900)
@@ -24,8 +30,7 @@ try:
 
 except:
     traceback.print_exc()
+finally:
+    br.quit()
 
 print("OK!")
-
-br.quit()
-
