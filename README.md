@@ -17,9 +17,8 @@ In order to execute this script, do this:
     git clone https://github.com/rkiddy/scrape_template.git scraper
     cd scraper
     virtualenv .venv
-    source .venv/bin/activate
-    pip install -r requirements.txt
-    python scraper.py
+    ./.venv/bin/python -m pip install -r requirements.txt
+    ./.venv/bin/python scraper.py
 
 And that should be it! :--)
 
