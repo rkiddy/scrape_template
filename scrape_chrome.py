@@ -10,6 +10,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 def browser():
     opts = Options()
+    # opts.add_argument('--headless')
     opts.add_argument('user-agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 " \
                   "(KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"')
     opts.add_argument("--disable-gpu")
