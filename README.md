@@ -12,15 +12,29 @@ But. Part of it can be made simpler.
 
 This project shows a python script which is doing a little bit of scraping.
 
+You will still have to figure out how to install either the firefox driver executable and set
+the environment variable (somewhere) so that its location is discoverable. There may be several
+ways to install these things. An easy was to install the Chrome driver is:
+
+     sudo apt install chromium-chromedriver
+
 In order to execute this script, do this:
 
-    git clone https://github.com/rkiddy/scrape_template.git scraper
-    cd scraper
-    virtualenv .venv
-    ./.venv/bin/python -m pip install -r requirements.txt
-    ./.venv/bin/python scraper.py
+     git clone https://github.com/rkiddy/scrape_template.git scraper
+     cd scraper
+     virtualenv .venv
+     ./.venv/bin/python -m pip install -r requirements.txt
+     ./.venv/bin/python scraper.py
+
+I put a line into my ~/.bash_aliases file that has:
+
+     alias tp='./.venv/bin/python'
+
+Then I can say:
+
+    tp -m pip install -r requirements.txt
+    tp scraper.py
 
 And that should be it! :--)
-
 
 
